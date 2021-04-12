@@ -9,6 +9,7 @@ public class Character implements Mortal, Stats {
     long baseSpd;
     long baseAgl;
     boolean isDead = false;
+    boolean isReady;
     Weapon weapon;
     Armor armor;
     Elixir elixir;
@@ -148,4 +149,8 @@ public class Character implements Mortal, Stats {
     public Elixir getElixir(){
         return elixir;
     }
+
+    public void setIsReady(boolean value) { this.isReady = value;}
+
+    public boolean isReady(){ return isReady; }
 }
