@@ -1,6 +1,14 @@
 package ElixirDomain.Elixir;
 
+import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+
+@Entity
 public class Character implements Mortal, Stats {
+    @Id
+    @GeneratedValue
+    Long id;
     String name;
     long health;
     long maxHealth;
@@ -13,6 +21,7 @@ public class Character implements Mortal, Stats {
     Weapon weapon;
     Armor armor;
     Elixir elixir;
+
 
     public Character(String name, long health, long attack, long defense, long speed, long agility){
         this.name = name;
