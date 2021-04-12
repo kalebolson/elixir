@@ -13,13 +13,6 @@ public class Character implements Mortal, Stats {
     Armor armor;
     Elixir elixir;
 
-    /*
-    * To do
-    * create constructors
-    * create methods to set weapon, armor, and elixir
-    * make sure to adjust attack, defense, etc in those methods
-    * */
-
     public Character(String name, long health, long attack, long defense, long speed, long agility){
         this.name = name;
         this.health = health;
