@@ -1,18 +1,76 @@
 package ElixirDomain.Elixir;
 
-import javax.persistence.Id;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.*;
 
 @Entity
 public class Character implements Mortal, Stats {
-    @Id
-    @GeneratedValue
+
     Long id;
     String name;
     long health;
     long maxHealth;
     long baseAtk;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setHealth(long health) {
+        this.health = health;
+    }
+
+    public long getMaxHealth() {
+        return maxHealth;
+    }
+
+    public void setMaxHealth(long maxHealth) {
+        this.maxHealth = maxHealth;
+    }
+
+    public long getBaseAtk() {
+        return baseAtk;
+    }
+
+    public void setBaseAtk(long baseAtk) {
+        this.baseAtk = baseAtk;
+    }
+
+    public long getBaseDef() {
+        return baseDef;
+    }
+
+    public void setBaseDef(long baseDef) {
+        this.baseDef = baseDef;
+    }
+
+    public long getBaseSpd() {
+        return baseSpd;
+    }
+
+    public void setBaseSpd(long baseSpd) {
+        this.baseSpd = baseSpd;
+    }
+
+    public long getBaseAgl() {
+        return baseAgl;
+    }
+
+    public void setBaseAgl(long baseAgl) {
+        this.baseAgl = baseAgl;
+    }
+
+    public void setDead(boolean dead) {
+        isDead = dead;
+    }
+
+    public void setReady(boolean ready) {
+        isReady = ready;
+    }
+
     long baseDef;
     long baseSpd;
     long baseAgl;
@@ -22,6 +80,7 @@ public class Character implements Mortal, Stats {
     Armor armor;
     Elixir elixir;
 
+    public Character(){}
 
     public Character(String name, long health, long attack, long defense, long speed, long agility){
         this.name = name;
@@ -31,6 +90,16 @@ public class Character implements Mortal, Stats {
         this.baseDef = defense;
         this.baseSpd = speed;
         this.baseAgl = agility;
+    }
+
+    @Id
+    @GeneratedValue
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override
@@ -139,6 +208,7 @@ public class Character implements Mortal, Stats {
         this.weapon = w;
     }
 
+    @OneToOne(targetEntity = Weapon.class)
     public Weapon getWeapon(){
         return weapon;
     }
@@ -147,6 +217,7 @@ public class Character implements Mortal, Stats {
         this.armor = a;
     }
 
+    @OneToOne(targetEntity=Armor.class)
     public Armor getArmor() {
         return armor;
     }
@@ -155,6 +226,7 @@ public class Character implements Mortal, Stats {
         this.elixir = e;
     }
 
+    @OneToOne(targetEntity=Elixir.class)
     public Elixir getElixir(){
         return elixir;
     }

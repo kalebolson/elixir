@@ -1,5 +1,6 @@
 package ElixirDomain.Elixir;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,8 +12,31 @@ public class Player {
     @Id
     @GeneratedValue
     Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCharacters(ArrayList<Character> characters) {
+        this.characters = characters;
+    }
+
     String name;
     ArrayList<Character> characters;
+
+    public Player(){}
 
     public Player (String name, Character c1, Character c2, Character c3) {
         this.name = name;
