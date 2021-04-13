@@ -1,6 +1,12 @@
 package ElixirDomain.Elixir;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public abstract class Item implements Stats{
+    @Id @GeneratedValue Long id;
     String name;
     long attack;
     long defense;
@@ -53,5 +59,13 @@ public abstract class Item implements Stats{
     @Override
     public long getAgl() {
         return agility;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+        return this.name;
     }
 }

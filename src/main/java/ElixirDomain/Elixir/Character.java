@@ -162,4 +162,19 @@ public class Character implements Mortal, Stats {
     public void setIsReady(boolean value) { this.isReady = value;}
 
     public boolean isReady(){ return isReady; }
+
+    @Override
+    public String toString() {
+        String s = "";
+        s += this.name + '\n';
+        if (weapon != null) s += "Weapon: " + weapon.getName();
+        if (armor != null) s += "Armor: " + armor.getName();
+        if (elixir != null) s += "Elixir: " + elixir.getName();
+        s += "Attack: " + getAtk() + '\n';
+        s += "Defense: " + getDef() + '\n';
+        s += "Speed: " + getSpd() + '\n';
+        s += "Agility: " + getAgl() + '\n';
+
+        return s;
+    }
 }
