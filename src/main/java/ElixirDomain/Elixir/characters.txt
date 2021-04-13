@@ -1,2 +1,0 @@
-Hambleburger,100,85,90,60
-Daeliah,95,90,60,70

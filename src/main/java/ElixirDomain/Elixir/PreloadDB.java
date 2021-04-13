@@ -21,10 +21,24 @@ public class PreloadDB {
     CommandLineRunner initDatabase(CharacterRepository cRepo){
         ArrayList<Character> cList = new ArrayList<>();
         try {
-            File file = new File("characters.txt");
+            File file = new File(".\\preloaddata\\characters.txt");
             Scanner sc = new Scanner(file).useDelimiter(",");
             while (sc.hasNextLine()){
-                Character c = new Character(sc.next(),sc.nextLong(),sc.nextLong(),sc.nextLong(),sc.nextLong(),sc.nextLong());
+                String name = sc.next();
+                System.out.println(name);
+                Long health = sc.nextLong();
+                System.out.println(health);
+                Long attack = sc.nextLong();
+                System.out.println(attack);
+                Long defense = sc.nextLong();
+                System.out.println(defense);
+                Long speed = sc.nextLong();
+                System.out.println(speed);
+                Long agility = sc.nextLong();
+                System.out.println(agility);
+                Character c = new Character(name,health,attack,defense,speed,agility);
+
+                cList.add(c);
             }
             sc.close();
         } catch (FileNotFoundException e){
