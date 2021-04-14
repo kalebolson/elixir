@@ -18,38 +18,64 @@ public class PreloadDB {
 
 
     @Bean
-    CommandLineRunner initDatabase(CharacterRepository cRepo){
+    CommandLineRunner initDatabase(CharacterRepository cRepo, ItemRepository iRepo){
         ArrayList<Character> cList = new ArrayList<>();
-        try {
-            File file = new File(".\\preloaddata\\characters.txt");
-            Scanner sc = new Scanner(file).useDelimiter(",");
-            while (sc.hasNextLine()){
-                String name = sc.next();
-                System.out.println(name);
-                Long health = sc.nextLong();
-                System.out.println(health);
-                Long attack = sc.nextLong();
-                System.out.println(attack);
-                Long defense = sc.nextLong();
-                System.out.println(defense);
-                Long speed = sc.nextLong();
-                System.out.println(speed);
-                Long agility = sc.nextLong();
-                System.out.println(agility);
-                Character c = new Character(name,health,attack,defense,speed,agility);
+        ArrayList<Item> iList = new ArrayList<>();
+        File file;
+        Scanner sc;
+        String filename = "";
 
+        try {
+            filename = "characters.txt";
+            file = new File(".\\preloaddata\\" + filename);
+            sc = new Scanner(file).useDelimiter(",");
+            while (sc.hasNextLine()){
+                Character c = new Character(sc.next(),sc.nextLong(),sc.nextLong(),sc.nextLong(),sc.nextLong(),sc.nextLong());
                 cList.add(c);
             }
             sc.close();
+
+            filename = "weapons.txt";
+            file = new File(".\\preloaddata\\" + filename);
+            sc = new Scanner(file).useDelimiter(",");
+            while (sc.hasNextLine()){
+                Weapon w = new Weapon(sc.next(),sc.nextLong(),sc.nextLong(),sc.nextLong(),sc.nextLong());
+                iList.add(w);
+            }
+            sc.close();
+
+            filename = "armor.txt";
+            file = new File(".\\preloaddata\\" + filename);
+            sc = new Scanner(file).useDelimiter(",");
+            while (sc.hasNextLine()){
+                Armor a = new Armor(sc.next(),sc.nextLong(),sc.nextLong(),sc.nextLong(),sc.nextLong());
+                iList.add(a);
+            }
+            sc.close();
+
+            filename = "elixir.txt";
+            file = new File(".\\preloaddata\\" + filename);
+            sc = new Scanner(file).useDelimiter(",");
+            while (sc.hasNextLine()){
+                Elixir el = new Elixir(sc.next(),sc.nextLong(),sc.nextLong(),sc.nextLong(),sc.nextLong());
+                iList.add(el);
+            }
+            sc.close();
         } catch (FileNotFoundException e){
-            System.out.println("Character File not found");
-            log.info("Couldn't find \"characters.txt\"");
+            log.info("Couldn't find" + filename + "in preloaddata directory");
         }
+
 
         return args -> {
             for (Character c : cList){
                 log.info("Preloading " + cRepo.save(c));
             }
+
+            for (Item i : iList){
+                log.info("Preloading " + iRepo.save(i));
+            }
         };
     }
+
+
 }
