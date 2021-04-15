@@ -57,6 +57,7 @@ public abstract class Item implements Stats{
 
     public void setId(Long id){ this.id = id; }
     @Id
+    @GeneratedValue
     public Long getId(){ return this.id; }
 
     @Override

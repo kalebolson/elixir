@@ -1,0 +1,6 @@
+Long Island Greatsword,50,0,0,-30,
+Pincer,20,0,0,0,
+Sting,25,0,0,0,
+Lavish Ivory Blade,35,20,-20,0,
+Hunter's Crossbow,35,0,20,0,
+painted stick,80,0,10,20

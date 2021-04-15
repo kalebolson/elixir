@@ -62,7 +62,8 @@ public class PreloadDB {
             }
             sc.close();
         } catch (FileNotFoundException e){
-            log.info("Couldn't find" + filename + "in preloaddata directory");
+            log.info("Couldn't find \"" + filename + "\" in preloaddata directory \n" +
+                    "Other files may be missing as well.");
         }
 
 
