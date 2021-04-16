@@ -14,7 +14,7 @@ public class Character implements Mortal, Stats {
     long speed;
     long agility;
     boolean isDead = false;
-    boolean isReady;
+    boolean isReady = true;
     Weapon weapon;
     Armor armor;
     Elixir elixir;

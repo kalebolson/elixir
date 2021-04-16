@@ -1,0 +1,6 @@
+thicc armor,0,50,-20,0,
+north face jacket,0,5,0,20,
+skateboard helmet,0,25,0,10,
+heelys,0,7,35,35,
+mad carhart drip,0,99,0,0,
+fashionable 90s shoulder pads,0,60,0,10

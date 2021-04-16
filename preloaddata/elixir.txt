@@ -1,0 +1,6 @@
+bitteschlappe brown ale,50,0,-50,0,
+goldschlager,0,50,0,-50,
+jaegerfightster,50,-25,0,-25,
+sucker punch,-50,50,0,0,
+sour chug rug,0,0,0,100,
+jungle juice,50,50,50,-501
