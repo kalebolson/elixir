@@ -13,4 +13,8 @@ public class Elixir extends Item {
         super(name, attack, defense, speed, agility);
     }
 
+    @Override
+    public String toString(){
+        return "*ELIXIR*" + '\n' + super.toString();
+    }
 }

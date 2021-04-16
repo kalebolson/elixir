@@ -66,4 +66,16 @@ public abstract class Item implements Stats{
     @Id
     @GeneratedValue
     public Long getId(){ return this.id; }
+
+    @Override
+    public String toString(){
+        String s = "";
+        s += this.getName() + '\n';
+        s += "Attack: " + this.getAttack() + '\n';
+        s += "Defense: " + this.getDefense() + '\n';
+        s += "Speed: " + this.getSpeed() + '\n';
+        s += "Agility: " + this.getAgility() + '\n';
+        return s;
+    }
+
 }

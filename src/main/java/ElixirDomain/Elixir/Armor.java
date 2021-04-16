@@ -11,4 +11,8 @@ public class Armor extends Item {
         super(name, attack, defense, speed, agility);
     }
 
+    @Override
+    public String toString(){
+        return "*ARMOR*" + '\n' + super.toString();
+    }
 }

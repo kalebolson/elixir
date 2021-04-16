@@ -13,4 +13,8 @@ public class Weapon extends Item {
         super(name, attack, defense, speed, agility);
     }
 
+    @Override
+    public String toString(){
+        return "*WEAPON*" + '\n' + super.toString();
+    }
 }
