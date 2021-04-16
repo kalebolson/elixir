@@ -15,6 +15,6 @@ public class Weapon extends Item {
 
     @Override
     public String toString(){
-        return "*WEAPON*" + '\n' + super.toString();
+        return "*WEAPON*" + super.toString();
     }
 }
