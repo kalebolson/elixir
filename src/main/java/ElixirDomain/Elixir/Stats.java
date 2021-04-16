@@ -1,12 +1,12 @@
 package ElixirDomain.Elixir;
 
 public interface Stats {
-    public void setAtk(long value);
-    public long getAtk();
-    public void setDef(long value);
-    public long getDef();
-    public void setSpd(long value);
-    public long getSpd();
-    public void setAgl(long value);
-    public long getAgl();
+    public void setAttack(long value);
+    public long getAttack();
+    public void setDefense(long value);
+    public long getDefense();
+    public void setSpeed(long value);
+    public long getSpeed();
+    public void setAgility(long value);
+    public long getAgility();
 }

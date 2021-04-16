@@ -9,7 +9,37 @@ public class Character implements Mortal, Stats {
     String name;
     long health;
     long maxHealth;
-    long baseAtk;
+    long attack;
+    long defense;
+    long speed;
+    long agility;
+    boolean isDead = false;
+    boolean isReady;
+    Weapon weapon;
+    Armor armor;
+    Elixir elixir;
+
+    public Character(){}
+
+    public Character(String name, long health, long attack, long defense, long speed, long agility){
+        this.name = name;
+        this.health = health;
+        isDead = health <= 0;
+        this.attack = attack;
+        this.defense = defense;
+        this.speed = speed;
+        this.agility = agility;
+    }
+
+    @Id
+    @GeneratedValue
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -17,6 +47,11 @@ public class Character implements Mortal, Stats {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public long getHealth() {
+        return health;
     }
 
     public void setHealth(long health) {
@@ -31,38 +66,6 @@ public class Character implements Mortal, Stats {
         this.maxHealth = maxHealth;
     }
 
-    public long getBaseAtk() {
-        return baseAtk;
-    }
-
-    public void setBaseAtk(long baseAtk) {
-        this.baseAtk = baseAtk;
-    }
-
-    public long getBaseDef() {
-        return baseDef;
-    }
-
-    public void setBaseDef(long baseDef) {
-        this.baseDef = baseDef;
-    }
-
-    public long getBaseSpd() {
-        return baseSpd;
-    }
-
-    public void setBaseSpd(long baseSpd) {
-        this.baseSpd = baseSpd;
-    }
-
-    public long getBaseAgl() {
-        return baseAgl;
-    }
-
-    public void setBaseAgl(long baseAgl) {
-        this.baseAgl = baseAgl;
-    }
-
     public void setDead(boolean dead) {
         isDead = dead;
     }
@@ -71,41 +74,46 @@ public class Character implements Mortal, Stats {
         isReady = ready;
     }
 
-    long baseDef;
-    long baseSpd;
-    long baseAgl;
-    boolean isDead = false;
-    boolean isReady;
-    Weapon weapon;
-    Armor armor;
-    Elixir elixir;
-
-    public Character(){}
-
-    public Character(String name, long health, long attack, long defense, long speed, long agility){
-        this.name = name;
-        this.health = health;
-        isDead = health <= 0;
-        this.baseAtk = attack;
-        this.baseDef = defense;
-        this.baseSpd = speed;
-        this.baseAgl = agility;
-    }
-
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public long getAttack() {
+        return attack;
     }
 
     @Override
-    public long getHealth() {
-        return health;
+    public void setAttack(long attack) {
+        this.attack = attack;
     }
+
+    @Override
+    public long getDefense() {
+        return defense;
+    }
+
+    @Override
+    public void setDefense(long defense) {
+        this.defense = defense;
+    }
+
+    @Override
+    public long getSpeed() {
+        return speed;
+    }
+
+    @Override
+    public void setSpeed(long speed) {
+        this.speed = speed;
+    }
+
+    @Override
+    public long getAgility() {
+        return agility;
+    }
+
+    @Override
+    public void setAgility(long agility) {
+        this.agility = agility;
+    }
+
 
     @Override
     public void damage(long amount) {
@@ -122,86 +130,6 @@ public class Character implements Mortal, Stats {
     @Override
     public boolean isDead() {
         return isDead;
-    }
-
-    @Override
-    public void setAtk(long value) {
-        baseAtk = value;
-    }
-
-    @Override
-    public long getAtk() {
-        long attack = baseAtk;
-        if (this.weapon != null){
-            attack += this.weapon.getAtk();
-        }
-        if (this.armor != null){
-            attack += this.armor.getAtk();
-        }
-        if (this.elixir != null){
-            attack += this.elixir.getAtk();
-        }
-        return attack;
-    }
-
-    @Override
-    public void setDef(long value) {
-        baseDef = value;
-    }
-
-    @Override
-    public long getDef() {
-        long defense = baseDef;
-        if (this.weapon != null){
-            defense += this.weapon.getDef();
-        }
-        if (this.armor != null){
-            defense += this.armor.getDef();
-        }
-        if (this.elixir != null){
-            defense += this.elixir.getDef();
-        }
-        return defense;
-    }
-
-    @Override
-    public void setSpd(long value) {
-        baseSpd = value;
-    }
-
-    @Override
-    public long getSpd() {
-        long speed = baseSpd;
-        if (this.weapon != null){
-            speed += this.weapon.getSpd();
-        }
-        if (this.armor != null){
-            speed += this.armor.getSpd();
-        }
-        if (this.elixir != null){
-            speed += this.elixir.getSpd();
-        }
-        return speed;
-    }
-
-    @Override
-    public void setAgl(long value) {
-        baseAgl = value;
-    }
-
-    @Override
-    public long getAgl() {
-        long agility = baseAgl;
-        if (this.weapon != null){
-            agility += this.weapon.getAgl();
-        }
-        if (this.armor != null){
-            agility += this.armor.getAgl();
-        }
-        if (this.elixir != null){
-            agility += this.elixir.getAgl();
-        }
-        return agility;
     }
 
     public void setWeapon(Weapon w){
@@ -242,10 +170,10 @@ public class Character implements Mortal, Stats {
         if (weapon != null) s += "Weapon: " + weapon.getName();
         if (armor != null) s += "Armor: " + armor.getName();
         if (elixir != null) s += "Elixir: " + elixir.getName();
-        s += "Attack: " + getAtk() + '\n';
-        s += "Defense: " + getDef() + '\n';
-        s += "Speed: " + getSpd() + '\n';
-        s += "Agility: " + getAgl() + '\n';
+        s += "Attack: " + getAttack() + '\n';
+        s += "Defense: " + getDefense() + '\n';
+        s += "Speed: " + getSpeed() + '\n';
+        s += "Agility: " + getAgility() + '\n';
 
         return s;
     }

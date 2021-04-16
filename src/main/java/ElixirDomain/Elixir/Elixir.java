@@ -13,10 +13,4 @@ public class Elixir extends Item {
         super(name, attack, defense, speed, agility);
     }
 
-    @Id
-    @GeneratedValue
-    @Override
-    public Long getId() {
-        return this.id;
-    }
 }
