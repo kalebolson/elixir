@@ -15,6 +15,6 @@ public class Elixir extends Item {
 
     @Override
     public String toString(){
-        return "*ELIXIR*" + super.toString();
+        return "*ELIXIR*\n" + super.toString();
     }
 }

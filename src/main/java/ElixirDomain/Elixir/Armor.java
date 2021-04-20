@@ -13,6 +13,6 @@ public class Armor extends Item {
 
     @Override
     public String toString(){
-        return "*ARMOR*" + super.toString();
+        return "*ARMOR*\n" + super.toString();
     }
 }

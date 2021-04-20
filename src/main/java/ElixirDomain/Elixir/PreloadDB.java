@@ -32,6 +32,7 @@ public class PreloadDB {
             while (sc.hasNextLine()){
                 Character c = new Character(sc.next(),sc.nextLong(),sc.nextLong(),sc.nextLong(),sc.nextLong(),sc.nextLong());
                 cList.add(c);
+                if(sc.hasNextLine()) sc.nextLine(); //have to add this so \r\n doesn't get appended to the beginning of the next character's name
             }
             sc.close();
 
@@ -41,6 +42,7 @@ public class PreloadDB {
             while (sc.hasNextLine()){
                 Weapon w = new Weapon(sc.next(),sc.nextLong(),sc.nextLong(),sc.nextLong(),sc.nextLong());
                 iList.add(w);
+                if(sc.hasNextLine()) sc.nextLine();
             }
             sc.close();
 
@@ -50,6 +52,7 @@ public class PreloadDB {
             while (sc.hasNextLine()){
                 Armor a = new Armor(sc.next(),sc.nextLong(),sc.nextLong(),sc.nextLong(),sc.nextLong());
                 iList.add(a);
+                if(sc.hasNextLine()) sc.nextLine();
             }
             sc.close();
 
@@ -59,6 +62,7 @@ public class PreloadDB {
             while (sc.hasNextLine()){
                 Elixir el = new Elixir(sc.next(),sc.nextLong(),sc.nextLong(),sc.nextLong(),sc.nextLong());
                 iList.add(el);
+                if(sc.hasNextLine()) sc.nextLine();
             }
             sc.close();
         } catch (FileNotFoundException e){
@@ -69,11 +73,11 @@ public class PreloadDB {
 
         return args -> {
             for (Character c : cList){
-                log.info("Preloading " + cRepo.save(c));
+                log.info("\nPreloading: " + cRepo.save(c));
             }
 
             for (Item i : iList){
-                log.info("Preloading " + iRepo.save(i));
+                log.info("\nPreloading: " + iRepo.save(i));
             }
         };
     }

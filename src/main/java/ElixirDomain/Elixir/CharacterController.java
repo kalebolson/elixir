@@ -31,5 +31,24 @@ public class CharacterController {
         return repo.findById(id).orElseThrow(() -> new CharacterNotFoundException(id));
     }
 
-    
+    @PutMapping("/characters/{id}")
+    Character replaceCharacter(@RequestBody Character newCharacter, @PathVariable Long id){
+        return repo.findById(id).map(character -> {
+            character.setName(newCharacter.getName());
+            character.setAgility(newCharacter.getAgility());
+            character.setAttack(newCharacter.getAttack());
+            character.setDefense(newCharacter.getDefense());
+            character.setSpeed(newCharacter.getSpeed());
+            return repo.save(character);
+        })
+                .orElseGet(() -> {
+                    newCharacter.setId(id);
+                    return repo.save(newCharacter);
+                });
+    }
+
+    @DeleteMapping("/characters/{id}")
+    void deleteEmployee(@PathVariable Long id){
+        repo.deleteById(id);
+    }
 }
