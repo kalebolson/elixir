@@ -51,4 +51,13 @@ public class CharacterController {
     void deleteEmployee(@PathVariable Long id){
         repo.deleteById(id);
     }
+
+    @PutMapping("/characters/{characterId}/weapon")
+    Item replaceWeapon(@RequestBody Weapon newWeapon,@PathVariable Long characterId){
+        Character c = repo.findById(characterId).orElseThrow(() -> new CharacterNotFoundException(characterId));
+
+        c.setWeapon(newWeapon);
+
+        return repo.save(c).getWeapon();
+    }
 }

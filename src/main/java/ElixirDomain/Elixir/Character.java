@@ -136,7 +136,7 @@ public class Character implements Mortal, Stats {
         this.weapon = w;
     }
 
-    @OneToOne(targetEntity = Weapon.class)
+    @OneToOne(targetEntity = Weapon.class, cascade = {CascadeType.ALL})
     public Weapon getWeapon(){
         return weapon;
     }
