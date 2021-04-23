@@ -43,4 +43,9 @@ public class ItemController {
                     return repo.save(newItem);
                 });
     }
+
+    @DeleteMapping("/items/{id}")
+    void deleteItem(@PathVariable Long id){
+        repo.deleteById(id);
+    }
 }
