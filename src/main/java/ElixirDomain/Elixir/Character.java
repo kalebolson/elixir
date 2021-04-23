@@ -145,7 +145,7 @@ public class Character implements Mortal, Stats {
         this.armor = a;
     }
 
-    @OneToOne(targetEntity=Armor.class)
+    @OneToOne(targetEntity=Armor.class, cascade = {CascadeType.ALL})
     public Armor getArmor() {
         return armor;
     }
@@ -154,7 +154,7 @@ public class Character implements Mortal, Stats {
         this.elixir = e;
     }
 
-    @OneToOne(targetEntity=Elixir.class)
+    @OneToOne(targetEntity=Elixir.class, cascade = {CascadeType.ALL})
     public Elixir getElixir(){
         return elixir;
     }

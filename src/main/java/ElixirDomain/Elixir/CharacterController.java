@@ -53,11 +53,23 @@ public class CharacterController {
     }
 
     @PutMapping("/characters/{characterId}/weapon")
-    Item replaceWeapon(@RequestBody Weapon newWeapon,@PathVariable Long characterId){
+    Weapon replaceWeapon(@RequestBody Weapon newWeapon,@PathVariable Long characterId){
         Character c = repo.findById(characterId).orElseThrow(() -> new CharacterNotFoundException(characterId));
-
         c.setWeapon(newWeapon);
-
         return repo.save(c).getWeapon();
+    }
+
+    @PutMapping("/characters/{characterID}/armor")
+    Armor replaceArmor(@RequestBody Armor newArmor, @PathVariable Long characterId){
+        Character c = repo.findById(characterId).orElseThrow(() -> new CharacterNotFoundException(characterId));
+        c.setArmor(newArmor);
+        return repo.save(c).getArmor();
+    }
+
+    @PutMapping("/characters/{characterID}/elixir")
+    Elixir replaceElixir(@RequestBody Elixir newElixir, @PathVariable Long characterId){
+        Character c = repo.findById(characterId).orElseThrow(() -> new CharacterNotFoundException(characterId));
+        c.setElixir(newElixir);
+        return repo.save(c).getElixir();
     }
 }
